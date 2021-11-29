@@ -3,6 +3,7 @@ import time
 import os
 
 
+# Selects first webcam on computer, and detects face by putting a rectangle over their face
 def showWebcam():
     # Access the cascdeclassifier
     face_cascde = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -32,14 +33,14 @@ def showWebcam():
 clear = lambda: os.system('cls')
 DataBase = {}
 
-
+# Prints the intro page instructions
 def printIntroPage():
     print("\tPanda Protection")
     print("1) Create Account")
     print("2) Login")
     print("3) Exit")
 
-
+# Prints the main page instructions
 def printMainPage():
     print("\tMain Menu")
     print("1) Open Webcam")
