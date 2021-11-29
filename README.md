@@ -2,6 +2,9 @@
 
 
 ## Instructions to run PandaProtection.py
-1 Make sure you have the OpenCV library
-    -"pip3 install opencv-python"\n
-2 Make sure haarcascade_frontalface_default.xml file in located in your project folder
+- Make sure you have the OpenCV library
+       - "pip3 install opencv-python"
+- Make sure haarcascade_frontalface_default.xml file in located in your project folder
+- Make sure you have a webcam connected 
+
+After bt
