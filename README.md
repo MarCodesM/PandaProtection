@@ -7,4 +7,4 @@
 - Make sure haarcascade_frontalface_default.xml file in located in your project folder
 - Make sure you have a webcam connected 
 
-Once all three steps are completed, you will be able to rub the program without any issues. 
+Once all three steps are completed, you will be able to run the program without any issues. 
