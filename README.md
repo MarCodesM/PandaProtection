@@ -9,4 +9,5 @@
 
 Once all three steps are completed, you will be able to run the program without any issues. 
 
-*Program has been tested and ran on a Windows 10 machine using an external camera*
+
+**Program has been tested and ran on a Windows 10 machine using an external camera**
