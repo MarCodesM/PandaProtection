@@ -30,8 +30,9 @@ def showWebcam():
         cv2.waitKey(50)
 
 
-clear = lambda: os.system('cls')
+cls = lambda: os.system('cls')
 DataBase = {}
+
 
 # Prints the intro page instructions
 def printIntroPage():
@@ -40,12 +41,14 @@ def printIntroPage():
     print("2) Login")
     print("3) Exit")
 
+
 # Prints the main page instructions
 def printMainPage():
     print("\tMain Menu")
     print("1) Open Webcam")
     print("2) Settings")
-    print("3) Exit")
+    print("3) Return to Introduction Menu")
+    print("4) Exit")
 
 
 def printSettingsPage():
@@ -57,7 +60,7 @@ def printSettingsPage():
 
 
 def introMenu():
-    clear()
+    cls()
     printIntroPage()
 
     userChoice = int(input("Enter Choice: "))
@@ -71,46 +74,56 @@ def introMenu():
 
 
 def createAccount():
-    clear()
+    cls()
     print("\tCreate Account")
 
     username = input("Enter Username: ")
     password = input("Enter password: ")
 
-    checkVal = checkUserInfo(username)
+    checkUser = checkUserInfo(username)
+    checkPass = checkPasswordInfo(password)
 
-    if (checkVal):
+    if (checkUser and checkPass):
         DataBase[username] = password
-        print("1) Submit")
-        print("2) Exit")
+        print("ACCOUNT CREATED\n")
+        print("1) Continue")
+        print("2) Back to Main Menu")
 
         userChoice = int(input("Enter Choice: "))
         if (userChoice == 1):
-            introMenu()
+            home()
         else:
-            exit()
-
+            introMenu()
+    elif ((not checkUser) and checkPass):
+        print("\nUsername must be above 6 characters. Try Again")
+    elif ((not checkPass) and checkUser):
+        print("\nPassword must be above 6 characters. Try Again")
     else:
-        print("Username must be above 6 characters. Try Again")
-        time.sleep(2)
+        print("\nInvalid Username and Password ")
+
+    print("1) Try again")
+    print("2) Back to Main Menu\n")
+    userChoice = int(input("Enter Choice: "))
+
+    if (userChoice == 1):
         createAccount()
+    else:
+        introMenu()
 
 
 def login():
-    clear()
+    cls()
     print("\tLogin")
-
-
 
     username = input("Enter Username: ")
     password = input("Enter password: ")
     loginVal = verifyPassword(username, password)
 
-    if (login):
+    if (loginVal):
         home()
     else:
         print("Incorrect Username or Password\n")
-        time.sleep(2)
+        time.sleep(1)
 
         print("1) Try again")
         print("2) Back to Main Menu")
@@ -123,6 +136,13 @@ def login():
 
 
 def checkUserInfo(username):
+    if (len(username) < 6):
+        return False
+    else:
+        return True
+
+
+def checkPasswordInfo(username):
     if (len(username) < 6):
         return False
     else:
@@ -142,7 +162,7 @@ def verifyPassword(username, password):
 
 
 def home():
-    clear()
+    cls()
     printMainPage()
 
     userChoice = int(input("Enter Choice: "))
@@ -152,6 +172,8 @@ def home():
     elif userChoice == 2:
         userSettings()
     elif userChoice == 3:
+        introMenu()
+    else:
         exit()
 
 
@@ -160,13 +182,13 @@ def openCamera():
 
 
 def userSettings():
-    clear()
+    cls()
     printSettingsPage()
 
     userChoice = int(input("Enter Choice: "))
 
     if userChoice == 1:
-        clear()
+        cls()
         print("\tChange Username")
         temp = input("Enter your old username: ")
 
@@ -182,7 +204,7 @@ def userSettings():
             userSettings()
 
     if userChoice == 2:
-        clear()
+        cls()
         print("\tChange Password")
         temp = input("Enter Username: ")
 
@@ -199,7 +221,7 @@ def userSettings():
             userSettings()
 
     if userChoice == 3:
-        clear()
+        cls()
         print("\tAdd New User")
 
         username = input("Enter username: ")
